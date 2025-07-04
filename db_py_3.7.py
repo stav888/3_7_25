@@ -28,11 +28,9 @@ CREATE TABLE IF NOT EXISTS COMPANY(
 # ''')
 
 cursor.execute('''
-INSERT INTO if not exist COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
-VALUES
-(?, ?, ?, ?);
-(1, 'Paul', 32, 'California', 20000.00 )
-''')
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (?, ?, ?, ?, ?);
+''', (1, 'Paul', 32, 'California', 20000.00 ))
 
 conn.commit() #write changes
 conn.close()  #close for safty
