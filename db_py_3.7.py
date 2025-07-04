@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS COMPANY(
 
 cursor.executemany('''
 
-''')
+
 # cursor.execute('''
 # INSERT INTO if not exist COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
 # VALUES
