@@ -28,8 +28,14 @@ INSERT INTO STUDENTS (ID, NAME, GRADE, BIRTHYEAR)
 VALUES (?, ?, ?, ?);
 ''', data)
 
-# Commit the transaction
+cursor.execute('''
+update students set GRADE = ? where id = ?;
+''', (88 , 3))
+
+cursor.execute('''
+DELETE FROM STUDENTS WHERE ID = ?
+''', (2,))
+
 conn.commit()
 
-# Close the connection
 conn.close()
