@@ -88,6 +88,8 @@ VALUES (?, ?, ?, ?, ?);
 
 conn.commit() #write changes
 
+#   ways to show last added row
+
 #option 1 to show the last added
 cursor.execute('SELECT * FROM company WHERE ID = ?;', (last_inserted,))
 last_student = cursor.fetchone()

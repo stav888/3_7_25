@@ -57,14 +57,12 @@ while True:
     except:
         print('=== cannot insert this row. try again')
 
-
-conn.commit()
-
 #option 1 to show the last added
 cursor.execute('SELECT * FROM STUDENTS WHERE ID = ?;', (last_inserted,))
 last_student = cursor.fetchone()
 print("Last inserted student:")
 print(dict(last_student))
 
+conn.commit()
 
 conn.close()
