@@ -36,6 +36,21 @@ cursor.execute('''
 DELETE FROM STUDENTS WHERE ID = ?
 ''', (2,))
 
+cursor.execute('SELECT * FROM students;')
+result = cursor.fetchall()
+for row in result:
+    print(dict(row))
+
+# solution:
+new_id = int(input('enter id:'))
+new_name = input('enter name:')
+new_age = int(input('enter age:'))
+new_address = input('enter address:')
+cursor.execute('''
+INSERT INTO STUDENTS (ID, NAME, GRADE, BIRTHYEAR)
+VALUES (?, ?, ?, ?, ?);
+''', (new_id, new_name, new_age, new_address, new_salary))
+
 conn.commit()
 
 conn.close()
