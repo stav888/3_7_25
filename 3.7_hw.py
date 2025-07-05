@@ -52,10 +52,19 @@ while True:
         INSERT INTO STUDENTS (ID, NAME, GRADE, BIRTHYEAR)
         VALUES (?, ?, ?, ?);
         ''', (new_id, new_name, new_grade, new_birthyear))
+        last_inserted = cursor.lastrowid
         break
     except:
         print('=== cannot insert this row. try again')
 
+
 conn.commit()
+
+#option 1 to show the last added
+cursor.execute('SELECT * FROM STUDENTS WHERE ID = ?;', (last_inserted,))
+last_student = cursor.fetchone()
+print("Last inserted student:")
+print(dict(last_student))
+
 
 conn.close()

@@ -84,5 +84,32 @@ INSERT INTO COMPANY (ID,NAME, AGE, ADDRESS, SALARY)
 VALUES (?, ?, ?, ?, ?);
 ''', (new_id, new_name, new_age, new_address, new_salary))
 
+
+
 conn.commit() #write changes
+
+#option 1 to show the last added
+cursor.execute('SELECT * FROM company WHERE ID = ?;', (last_inserted,))
+last_student = cursor.fetchone()
+print("Last inserted student:")
+print(dict(last_student))
+
+
+# 2. Fetch all records and print the last one
+cursor.execute('SELECT * FROM company;')
+result = cursor.fetchall()
+print(dict(result[-1]))  # Print the last record
+
+# 3. Fetch and print a specific record by ID
+new_id = 1  # Example ID
+cursor.execute('SELECT * FROM company WHERE ID = ?;', (new_id,))
+result = cursor.fetchone()
+print(dict(result))  # Print the specific record
+
+# 4. Fetch and print the last inserted record by ID
+last_inserted_id = cursor.lastrowid
+cursor.execute('SELECT * FROM company WHERE ID = ?;', (last_inserted_id,))
+last_inserted = cursor.fetchone()
+print(dict(last_inserted))  # Print the last inserted record
+
 conn.close()  #close for safety
